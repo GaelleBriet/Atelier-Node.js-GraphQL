@@ -1,0 +1,4 @@
+type PointOfSale {
+    id: Int
+    label: String
+}

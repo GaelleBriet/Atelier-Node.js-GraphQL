@@ -1,0 +1,10 @@
+type Price {
+    euros: Float
+    dollars: Float
+}
+
+type KindOfBike {
+    id: Int
+    label: String
+    price: Price
+}

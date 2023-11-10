@@ -1,0 +1,9 @@
+# Node.js files
+node_modules/
+
+# Integrated Development Environments files
+.idea/
+.vscode/
+
+# Environments files
+*.env

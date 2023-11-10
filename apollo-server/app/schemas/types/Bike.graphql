@@ -1,0 +1,16 @@
+enum BikeStatus {
+    AVAILABLE
+    RENT
+    REPAIR
+    LOST
+}
+
+type Bike {
+    id: Int
+    number: String
+    status: BikeStatus
+    kind: KindOfBike
+    shop: PointOfSale
+    rent: Rent
+    rents: [Rent]
+}

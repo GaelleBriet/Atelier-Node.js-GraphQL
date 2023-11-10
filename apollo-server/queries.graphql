@@ -1,0 +1,46 @@
+fragment BikeDetails on Bike {
+  id
+  number
+  status
+  kind {
+    label
+    price {
+      euros
+    }
+  }
+}
+
+query Bikes {
+  bikes (filter: { kind_of_bike_id: 1 }) {
+    ...BikeDetails
+  }
+}
+
+fragment RentDetails on Bike {
+  number
+  rent {
+    client {
+        firstname
+        lastname
+    }
+    schedule {
+      start
+      due
+    }
+    lessor {
+        label
+    }
+  }
+}
+
+query Bike {
+  bike (number: "A00001") {
+    ...RentDetails
+  }
+}
+
+query Bike {
+  bike (id: 3) {
+    ...RentDetails
+  }
+}

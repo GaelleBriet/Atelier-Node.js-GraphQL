@@ -1,0 +1,10 @@
+input Filter {
+    kind_of_bike_id: Int
+    status: BikeStatus
+    point_of_sale_id: Int
+}
+
+type Query {
+    bike(id: Int, number: String): Bike
+    bikes(filter: Filter): [Bike]
+}

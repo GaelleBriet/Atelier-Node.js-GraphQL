@@ -1,0 +1,8 @@
+# Login POST
+POST http://localhost:4015/login
+Content-Type: application/json
+
+{
+    "email": "admin@velo-cation.com",
+    "password": "secret"
+}

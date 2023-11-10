@@ -1,0 +1,21 @@
+scalar Date
+
+type Client {
+    firstname: String
+    lastname: String
+}
+
+type Schedule {
+    start: Date!
+    due: Date!
+    returned: Date
+}
+
+type Rent {
+    id: Int
+    client: Client,
+    bike: Bike,
+    schedule: Schedule,
+    lessor: PointOfSale!
+    recipient: PointOfSale
+}
