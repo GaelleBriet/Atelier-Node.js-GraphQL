@@ -1,7 +1,5 @@
 const { check, validationResult } = require("express-validator");
 
-const { AuthenticationError } = require("./errors");
-
 module.exports = {
   validate: {
     email: [
@@ -20,7 +18,7 @@ module.exports = {
       // Construit le message d'erreur avec tous les messages d'erreur de validation.
       const message = ["Un ou plusieurs champs sont invalides :"].concat(errors.array().map(error => error.msg).join(" | ")).join(" ");
       // Lance une erreur d'authentification avec le message d'erreur et un code d'erreur 400.
-      throw new AuthenticationError(message, 400);
+      throw new Error(message);
     }
     next();
   }
