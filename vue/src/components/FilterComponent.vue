@@ -2,9 +2,12 @@
 import FormSelect from "../components/formkit/FormSelect.vue";
 
 const props = defineProps<{
-  label: string;
-  // options: string[];
+  buttonLabel: string;
+  typeOptions: string[];
+  statusOptions: string[];
+  pointOfSaleOptions: string[];
 }>();
+
 const emit = defineEmits<{
   (e: "submit"): void;
 }>();
@@ -18,14 +21,14 @@ const handlesubmit = () => {
     <FormKit
       type="form"
       @submit="handlesubmit"
-      :submit-label="label"
+      :submit-label="buttonLabel"
       :submit-attrs="{ inputClass: 'classe-test1', wrapperClass: 'action-btn' }"
     >
-      <FormSelect :label="'Type'" :options="['Tous', 'type1', 'type2']" />
-      <FormSelect :label="'Statut'" :options="['Tous', 'En location', 'Disponible', 'En réparatin']" />
-      <FormSelect :label="'Point de vente'" :options="['Tous', 'Aix-en-Provence - Parc Jourdan', '2', '3']" />
+      <FormSelect :label="'Type'" :options="['Tous', ...typeOptions.map(option => option.label)]" />
+      <FormSelect :label="'Statut'" :options="['Tous', ...statusOptions.map(option => option.label)]" />
+      <FormSelect :label="'Point de vente'" :options="['Tous', ...pointOfSaleOptions.map(option => option.label)]" />
     </FormKit>
-    <div class="mb-5">Nombre de résultats</div>
+    <div class="results">Nombre de résultats</div>
   </div>
 </template>
 
@@ -37,7 +40,11 @@ const handlesubmit = () => {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-end;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+.results {
+  margin-bottom: 2rem;
+  margin-left: 2.2rem;
 }
 </style>
 <style>
