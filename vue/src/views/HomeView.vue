@@ -52,7 +52,7 @@ watch(
         <div class="btn-container">
           <router-link to="/location-start" class="btn btn-success mb-3">Démarrer une location</router-link>
           <router-link to="/location-end" class="btn btn-warning mb-3">Réceptionner une location</router-link>
-          <button class="btn btn-primary mb-3">Voir tous les vélos</button>
+          <router-link class="btn btn-primary mb-3" to="/bikes-list">Voir tous les vélos</router-link>
         </div>
       </div>
     </div>

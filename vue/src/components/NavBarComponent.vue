@@ -32,7 +32,7 @@ watch(
 
       <ul class="nav nav-pills align-content-center">
         <router-link class="nav-item nav-link" to="/">Accueil</router-link>
-        <router-link class="nav-item nav-link" to="/bikes">Liste de vélos</router-link>
+        <router-link class="nav-item nav-link" to="/bikes-list">Liste de vélos</router-link>
         <router-link class="nav-item nav-link" to="/location-start">Démarrer une location</router-link>
         <router-link class="nav-item nav-link" to="/location-end">Terminer une location</router-link>
       </ul>

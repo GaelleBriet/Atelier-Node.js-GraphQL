@@ -20,7 +20,7 @@ const onSubmit = () => {
 </script>
 
 <template>
-  <div class="container ps-5">
+  <div class="container ps-5 pt-3">
     <TitleComponent title="Récupérer une location" />
     <FormKit type="form" @submit="onSubmit" :submit-label="submitButtonLabel">
       <div class="col-6">

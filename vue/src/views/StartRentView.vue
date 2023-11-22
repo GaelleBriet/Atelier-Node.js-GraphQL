@@ -5,7 +5,7 @@ import FormSelect from "../components/formkit/FormSelect.vue";
 </script>
 
 <template>
-  <div class="container ps-5">
+  <div class="container ps-5 pt-3">
     <TitleComponent :title="'Démarrer une location'" />
     <FormKit type="form" @submit="onSubmit">
       <div class="row">
