@@ -64,6 +64,10 @@ body,
   color: var(--text-color-pink);
 }
 
+.container-title {
+  font-weight: bold;
+}
+
 /*---- BTN ----*/
 .btn-primary {
   background-color: var(--primary-color);
@@ -101,4 +105,13 @@ body,
 /*---- FORMKIT ----*/
 [data-type="submit"] .formkit-input {
   background-color: var(--secondary-color);
+  width: 100%;
 }
+
+[data-family="button"] .formkit-wrapper {
+  padding-top: 3rem;
+}
+
+/* .formkit-wrapper .formkit-input {
+  width: 100%;
+} */

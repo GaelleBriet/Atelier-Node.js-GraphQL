@@ -3,6 +3,7 @@ import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { onMounted, watch } from "vue";
 import { usePointOfSaleStore } from "../stores/pointOfSale";
+import FormSelect from "../components/formkit/FormSelect.vue";
 
 const router = useRouter();
 const pointOfSaleStore = usePointOfSaleStore();
@@ -29,15 +30,13 @@ watch(
 <template>
   <template v-if="!pointOfSaleIsSelected">
     <div class="container home-container">
-      <div class="ms-5">
-        <p class="ms-1 pt-5">Veuillez renseigner le point de vente :</p>
-        <div class="w-40">
-          <select class="form-select" aria-label="Choisir un point de vente">
-            <option selected>Choisissez votre point de vente</option>
-            <option value="1">Aix-en-Provence - Parc Jourdan</option>
-          </select>
-          <button class="btn btn-secondary mt-3 w-100" @click="selectPointOfSale">Valider</button>
-        </div>
+      <div class="w-40 ps-5 pt-5">
+        <FormKit type="form" @submit="selectPointOfSale">
+          <FormSelect
+            :label="'Veuillez sélectionner votre point de vente'"
+            :options="['Aix-en-Provence - Parc Jourdan', '2', '3']"
+          />
+        </FormKit>
       </div>
     </div>
   </template>
@@ -52,7 +51,7 @@ watch(
         </div>
         <div class="btn-container">
           <router-link to="/location-start" class="btn btn-success mb-3">Démarrer une location</router-link>
-          <button class="btn btn-warning mb-3">Réceptionner une location</button>
+          <router-link to="/location-end" class="btn btn-warning mb-3">Réceptionner une location</router-link>
           <button class="btn btn-primary mb-3">Voir tous les vélos</button>
         </div>
       </div>
