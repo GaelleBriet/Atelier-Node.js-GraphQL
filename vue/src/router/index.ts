@@ -19,9 +19,10 @@ const router = createRouter({
       component: BikeListView
     },
     {
-      path: "/bike",
-      name: "bikes",
-      component: BikeView
+      path: "/bike/:id",
+      name: "bike",
+      component: BikeView,
+      props: true
     },
     {
       path: "/location-start",
