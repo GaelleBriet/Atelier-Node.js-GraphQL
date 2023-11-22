@@ -1,6 +1,7 @@
 <script setup>
-import NavBarComponent from './components/NavBarComponent.vue';
-import HomeView from './views/HomeView.vue';
+import { RouterView } from 'vue-router'
+import NavBarComponent from "./components/NavBarComponent.vue";
+import HomeView from "./views/HomeView.vue";
 </script>
 
 <template>
@@ -8,5 +9,6 @@ import HomeView from './views/HomeView.vue';
   <HomeView />
 </template>
 
-<style scoped>
+<style>
+@import "./assets/main.css";
 </style>
