@@ -1,5 +1,6 @@
 // Nous avons besoin du package jwt pour créer et vérifier des jetons JWT (JSON Web Tokens).
 const jwt = require("jsonwebtoken");
+const AuthenticationError = require("../errors/classes/AuthenticationError");
 
 module.exports = {
   // La fonction accepte une payload en entrée et retourne un jeton d'accès. La payload est un objet qui est encodé dans le jeton JWT.
@@ -18,7 +19,8 @@ module.exports = {
     try {
       return jwt.verify(token, process.env.JWT_SECRET);
     } catch(error) {
-      throw new Error(`Le jeton d'accès fourni est invalide ou expiré : ${error.message}`);
+      console.log(error);
+      throw new AuthenticationError(`Le jeton d'accès fourni est invalide ou expiré.`);
     }
   }
 };
