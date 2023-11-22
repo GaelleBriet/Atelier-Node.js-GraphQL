@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { RouterView } from "vue-router";
 import NavBarComponent from "./components/NavBarComponent.vue";
 import { useRouter } from "vue-router";
+
 const router = useRouter();
 </script>
 

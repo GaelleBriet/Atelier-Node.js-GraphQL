@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { onMounted, watch } from "vue";
@@ -8,23 +8,22 @@ const router = useRouter();
 const pointOfSaleStore = usePointOfSaleStore();
 const pointOfSaleIsSelected = ref(pointOfSaleStore.pointOfSaleSelected);
 
-
 const selectPointOfSale = () => {
   pointOfSaleStore.setPointOfSaleSelected(true);
 };
 
-onMounted(() => {
-  if (!pointOfSaleIsSelected) {
-    appStore.setPointOfSaleSelected(false);
-  }
-});
+// onMounted(() => {
+//   if (!pointOfSaleIsSelected) {
+//     appStore.setPointOfSaleSelected(false);
+//   }
+// });
 
 watch(
   () => pointOfSaleStore.pointOfSaleSelected,
-  (newValue) => {
+  newValue => {
     pointOfSaleIsSelected.value = newValue;
   }
-)
+);
 </script>
 
 <template>

@@ -5,6 +5,7 @@
   --navbar-background-light: rgb(223, 230, 237);
   --navbar-background-dark: rgb(158, 173, 186);
 
+  --text-color-black: rgb(31, 39, 46);
   --text-color-dark: rgb(41, 56, 69);
   --text-color-light: rgb(223, 230, 237);
   --text-color-pink: rgb(203, 100, 219);
@@ -48,6 +49,13 @@ body,
   background-color: var(--background-body-color-2);
   margin-bottom: 20px;
   margin-top: 40px;
+}
+
+.container-title {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: var(--text-color-dark);
+  font-size: 2rem;
 }
 
 .btn-primary {
