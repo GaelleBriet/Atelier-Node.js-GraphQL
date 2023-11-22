@@ -7,6 +7,10 @@ const props = defineProps({
   data: {
     type: Array,
     default: () => []
+  },
+  actionButton: {
+    type: Boolean,
+    default: true
   }
 });
 
@@ -32,7 +36,7 @@ const handleActionClick = rowIndex => {
       <tbody>
         <tr v-for="(row, rowIndex) in data" :key="rowIndex">
           <td v-for="(value, columnIndex) in row" :key="columnIndex">{{ value }}</td>
-          <td>
+          <td v-if="actionButton">
             <button class="btn btn-primary" @click="handleActionClick(rowIndex)">Détails</button>
           </td>
         </tr>
