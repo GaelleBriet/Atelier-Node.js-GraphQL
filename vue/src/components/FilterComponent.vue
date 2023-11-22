@@ -35,7 +35,6 @@ const handlesubmit = () => {
 <style scoped>
 @import "../assets/main.css";
 .formkit-form {
-  background-color: aqua;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
