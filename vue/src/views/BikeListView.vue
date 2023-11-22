@@ -2,6 +2,7 @@
 import { useRouter } from "vue-router";
 import TitleComponent from "../components/TitleComponent.vue";
 import DataGridComponent from "../components/DataGridComponent.vue";
+import FilterComponent from "../components/FilterComponent.vue";
 
 const router = useRouter();
 const tableData = [
@@ -21,12 +22,16 @@ const handleActionClick = rowIndex => {
     console.error("No bike selected");
   }
 };
+
+const onFilter = () => {
+  console.log("filter");
+};
 </script>
 
 <template>
   <div class="container ps-5 pt-3">
-    <TitleComponent title="Liste des vélos" />
-    <div>TODO : FILTER COMPONENT</div>
+    <TitleComponent :title="'Liste des vélos'" />
+    <FilterComponent :label="'Filtrer'" @submit="onFilter" />
     <div>
       <DataGridComponent
         :columns="['Numéro', 'Type', 'Prix EUR', 'Prix USD', 'Statut', 'Point de vente', 'Actions']"
