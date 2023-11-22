@@ -5,18 +5,21 @@ defineProps({
   label: String,
   help: String,
   placeholder: String,
+  options: {
+    type: Array,
+    default: () => [],
+  }
 });
 </script>
 
 <template>
   <div>
     <FormKit 
-      type="text" 
+      type="select" 
       :name="name"
       :id="id"
       :label="label"
-      :help="help"
-      :placeholder="placeholder"
+      :options="options"
       >
     </FormKit>
   </div>
