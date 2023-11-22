@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/HomeView.vue";
-import Rent from "../views/RentView.vue";
+import StartRent from "../views/StartRentView.vue";
+import EndRent from "../views/EndRentView.vue";
 import Bike from "../views/BikeView.vue";
 
 const router = createRouter({
@@ -19,7 +20,12 @@ const router = createRouter({
     {
       path: "/location-start",
       name: "location-start",
-      component: Rent
+      component: StartRent
+    },
+    {
+      path: "/location-end",
+      name: "location-end",
+      component: EndRent
     }
   ]
 });

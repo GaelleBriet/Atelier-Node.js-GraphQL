@@ -7,7 +7,6 @@ const pointOfSaleStore = usePointOfSaleStore();
 const pointOfSaleName = ref(pointOfSaleStore.name);
 const pointOfSaleSelected = ref(pointOfSaleStore.pointOfSaleSelected);
 
-console.log(pointOfSaleName.value);
 watch(
   () => pointOfSaleStore.name,
   newValue => {
@@ -35,7 +34,7 @@ watch(
         <router-link class="nav-item nav-link" to="/">Accueil</router-link>
         <router-link class="nav-item nav-link" to="/bikes">Liste de vélos</router-link>
         <router-link class="nav-item nav-link" to="/location-start">Démarrer une location</router-link>
-        <router-link class="nav-item nav-link" to="/">Terminer une location</router-link>
+        <router-link class="nav-item nav-link" to="/location-end">Terminer une location</router-link>
       </ul>
 
       <div class="me-5">
