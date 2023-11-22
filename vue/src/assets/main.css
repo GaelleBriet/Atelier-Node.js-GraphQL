@@ -5,7 +5,14 @@
   --navbar-background-light: rgb(223, 230, 237);
   --navbar-background-dark: rgb(158, 173, 186);
 
-  --text-color: rgb(41, 56, 69);
+  --text-color-dark: rgb(41, 56, 69);
+  --text-color-light: rgb(223, 230, 237);
+  --text-color-pink: rgb(203,100,219);
+
+  --primary-color: rgb(44, 136, 217);
+  --secondary-color: rgb(101, 88, 245);
+  --success-color: rgb(26, 174, 159);
+  --warning-color: rgb(232, 131, 58);
 }
 
 *,
@@ -24,10 +31,42 @@ body {
   color: var(--text-color);
 }
 
+/* #app {
+  max-height: 100%;
+} */
+
 .navbar {
   background: var(--navbar-background-dark);
 }
 
 .container {
   background-color: var(--background-body-color-2);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-color-light);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--text-color-light);
+}
+
+.btn-warning {
+  background-color: var(--warning-color);
+  border-color: var(--warning-color);
+  color: var(--text-color-light);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+  color: var(--text-color-light);
+}
+
+.text-color-pink {
+  color: var(--text-color-pink);
 }

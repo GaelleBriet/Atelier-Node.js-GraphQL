@@ -11,7 +11,7 @@
       <ul class="nav nav-pills align-content-center">
         <li class="nav-item"><a href="#" class="nav-link" aria-current="page">Accueil</a></li>
         <li class="nav-item"><a href="#" class="nav-link">Liste de vélos</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Démarrer une location</a></li>
+        <router-link class="nav-item" to="/location-start">Démarrer une location</router-link>
         <li class="nav-item"><a href="#" class="nav-link">Terminer une location</a></li>
       </ul>
 
