@@ -7,7 +7,7 @@
 
   --text-color-dark: rgb(41, 56, 69);
   --text-color-light: rgb(223, 230, 237);
-  --text-color-pink: rgb(203,100,219);
+  --text-color-pink: rgb(203, 100, 219);
 
   --primary-color: rgb(44, 136, 217);
   --secondary-color: rgb(101, 88, 245);
@@ -23,24 +23,31 @@
   padding: 0;
 }
 
-body {
-  height: 100vh;
+body,
+#app {
+  height: calc(100vh - 190px);
   margin: 0 auto;
   font-weight: normal;
   background: var(--background-body-color);
   color: var(--text-color);
 }
 
-/* #app {
-  max-height: 100%;
-} */
-
 .navbar {
   background: var(--navbar-background-dark);
 }
 
+.logo {
+  color: var(--text-color-dark);
+}
+
+.nav-link {
+  color: var(--secondary-color);
+}
+
 .container {
   background-color: var(--background-body-color-2);
+  margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 .btn-primary {
@@ -69,4 +76,12 @@ body {
 
 .text-color-pink {
   color: var(--text-color-pink);
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.w-40 {
+  width: 40%;
 }

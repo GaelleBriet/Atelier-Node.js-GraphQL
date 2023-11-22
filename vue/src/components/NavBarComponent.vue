@@ -1,23 +1,49 @@
-<script setup></script>
+<script setup>
+import { ref, watch } from "vue";
+import { usePointOfSaleStore } from "../stores/pointOfSale";
+
+const pointOfSaleStore = usePointOfSaleStore();
+
+const pointOfSaleName = ref(pointOfSaleStore.name);
+const pointOfSaleSelected = ref(pointOfSaleStore.pointOfSaleSelected);
+
+console.log(pointOfSaleName.value);
+watch(
+  () => pointOfSaleStore.name,
+  newValue => {
+    pointOfSaleName.value = newValue;
+    console.log(pointOfSaleName.value);
+  }
+);
+
+watch(
+  () => pointOfSaleStore.pointOfSaleSelected,
+  newValue => {
+    pointOfSaleSelected.value = newValue;
+  }
+);
+</script>
 
 <template>
   <div>
     <header class="navbar d-flex align-items-center justify-content-center justify-content-md-between">
-      <a href="/" class="d-flex align-items-center text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">vélO'</span>
-      </a>
+      <router-link to="/" class="d-flex align-items-center text-decoration-none ms-5">
+        <span class="fs-4 logo">vélO'</span>
+      </router-link>
 
       <ul class="nav nav-pills align-content-center">
-        <li class="nav-item"><a href="#" class="nav-link" aria-current="page">Accueil</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Liste de vélos</a></li>
-        <router-link class="nav-item" to="/location-start">Démarrer une location</router-link>
-        <li class="nav-item"><a href="#" class="nav-link">Terminer une location</a></li>
+        <router-link class="nav-item nav-link" to="/">Accueil</router-link>
+        <router-link class="nav-item nav-link" to="/bikes">Liste de vélos</router-link>
+        <router-link class="nav-item nav-link" to="/location-start">Démarrer une location</router-link>
+        <router-link class="nav-item nav-link" to="/">Terminer une location</router-link>
       </ul>
 
       <div class="me-5">
         <p>Point de vente</p>
-        <span>Nom du PDV</span>
+        <template v-if="pointOfSaleSelected">
+          <span v-html="pointOfSaleName"></span>
+        </template>
+        <span v-else> Aucun point de vente sélectionné</span>
         <li class="nav-link">Changer</li>
       </div>
     </header>
