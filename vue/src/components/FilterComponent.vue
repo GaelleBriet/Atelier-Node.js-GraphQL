@@ -18,12 +18,7 @@ const handlesubmit = () => {
 </script>
 <template>
   <div>
-    <FormKit
-      type="form"
-      @submit="handlesubmit"
-      :submit-label="buttonLabel"
-      :submit-attrs="{ inputClass: 'classe-test1', wrapperClass: 'action-btn' }"
-    >
+    <FormKit type="form" @submit="handlesubmit" :submit-label="buttonLabel">
       <FormSelect :label="'Type'" :options="['Tous', ...typeOptions.map(option => option.label)]" />
       <FormSelect :label="'Statut'" :options="['Tous', ...statusOptions.map(option => option.label)]" />
       <FormSelect :label="'Point de vente'" :options="['Tous', ...pointOfSaleOptions.map(option => option.label)]" />
@@ -33,7 +28,6 @@ const handlesubmit = () => {
 </template>
 
 <style scoped>
-@import "../assets/main.css";
 .formkit-form {
   display: flex;
   flex-direction: row;
@@ -45,9 +39,8 @@ const handlesubmit = () => {
   margin-bottom: 2rem;
   margin-left: 2.2rem;
 }
-</style>
-<style>
-[data-type="select"] .formkit-wrapper .formkit-inner {
+
+[data-type="select"].formkit-outer {
   width: 200px;
 }
 </style>

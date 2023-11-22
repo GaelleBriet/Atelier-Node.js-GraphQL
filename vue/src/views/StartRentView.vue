@@ -2,6 +2,7 @@
 import TitleComponent from "../components/TitleComponent.vue";
 import FormText from "../components/formkit/FormText.vue";
 import FormSelect from "../components/formkit/FormSelect.vue";
+import FormDate from "../components/formkit/FormDate.vue";
 </script>
 
 <template>
@@ -24,7 +25,7 @@ import FormSelect from "../components/formkit/FormSelect.vue";
           <FormSelect :label="'Point de vente'" :options="['Aix-en-Provence - Parc Jourdan', '2', '3']" />
         </div>
       </div>
-      <FormText :label="'Date de retour prévue'" />
+      <FormDate :label="'Date de retour prévue'" />
     </FormKit>
   </div>
 </template>
