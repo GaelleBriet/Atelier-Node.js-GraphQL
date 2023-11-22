@@ -1,0 +1,4 @@
+type Mutation {
+   createRent(data: CreateRentInput!): Rent!
+   updateRent(bike_number: String!): Rent!
+}

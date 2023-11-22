@@ -8,6 +8,10 @@ class CoreSQLDataSource {
     this.model = model;
   }
 
+  async create(data) {
+     return await this.model.create(data);
+  }
+
   async loadByPk(id) {
     return await this.#loaders.getByPk.load(id);
   }
