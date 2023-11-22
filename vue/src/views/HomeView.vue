@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+const router = useRouter();
+const redirect = () => {
+  router.push("/location-start");
+};
+</script>
 
 <template>
   <div class="container home-container my-5">
@@ -9,7 +15,7 @@
         <button class="btn btn-secondary">Changer de point de vente</button>
       </div>
       <div class="btn-container">
-        <button class="btn btn-success mb-3">Démarrer une location</button>
+        <button class="btn btn-success mb-3" @click="redirect">Démarrer une location</button>
         <button class="btn btn-warning mb-3">Réceptionner une location</button>
         <button class="btn btn-primary mb-3">Voir tous les vélos</button>
       </div>
