@@ -1,6 +1,16 @@
 const { GraphQLError } = require("graphql/error");
 
 module.exports = {
+  UNAUTHENTICATED: () => {
+    throw new GraphQLError("Vous devez être connecté pour effectuer cette action.", {
+      extensions: {
+        code: "UNAUTHENTICATED",
+        http: {
+          status: 401
+        }
+      }
+    });
+  },
   INTERNAL_SERVER_ERROR: (error) => {
     throw new GraphQLError(error.message, {
       extensions: {
