@@ -31,7 +31,7 @@ const pointOfSaleStore = usePointOfSaleStore();
 const pointOfSaleIsSelected = ref(pointOfSaleStore.pointOfSaleSelected);
 
 const selectPointOfSale = () => {
-  pointOfSaleStore.setPointOfSaleSelected(true);
+  pointOfSaleStore.setPointOfSaleSelected();
 };
 
 watch(

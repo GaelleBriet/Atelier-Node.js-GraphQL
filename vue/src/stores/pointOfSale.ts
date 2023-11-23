@@ -6,22 +6,20 @@ export interface PointOfSaleState {
 }
 
 export const usePointOfSaleStore = defineStore("pointOfSale", {
-  state: function (): PointOfSaleState {
-    return {
-      pointOfSaleSelected: false,
-      name: "Aix-en-Provence - Parc Jourdan"
-    };
-  },
+  state: (): PointOfSaleState => ({
+    pointOfSaleSelected: false,
+    name: "Aix-en-Provence - Parc Jourdan"
+  }),
   getters: {
-    getPointOfSaleSelected: function (state: PointOfSaleState): boolean {
+    getPointOfSaleSelected: (state: PointOfSaleState): boolean => {
       return state.pointOfSaleSelected;
     },
-    getName: function (state: PointOfSaleState): string {
+    getName: (state: PointOfSaleState): string => {
       return state.name;
     }
   },
   actions: {
-    setPointOfSaleSelected: function (this: PointOfSaleState): void {
+    setPointOfSaleSelected(this: PointOfSaleState): void {
       this.pointOfSaleSelected = true;
     }
   }
