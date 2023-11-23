@@ -7,6 +7,9 @@ import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client/core
 import { DefaultApolloClient } from "@vue/apollo-composable";
 import { setContext } from "@apollo/client/link/context";
 
+import { useUserStore } from "./stores/userStore";
+import { authService } from "./services/auth.service";
+
 import App from "./App.vue";
 import router from "./router/index.js";
 
@@ -38,5 +41,10 @@ app.use(createPinia());
 app.use(router);
 app.use(plugin, defaultConfig(config));
 app.provide(DefaultApolloClient, apolloClient);
+
+const userStore = useUserStore();
+const token = await authService.login("admin@velo-cation.com", "secret");
+
+userStore.setUser(token);
 
 app.mount("#app");

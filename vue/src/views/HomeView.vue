@@ -29,7 +29,7 @@ import gql from "graphql-tag";
 const { result } = useQuery(
   gql`
     query getPointOfSales {
-      pointOfSales {
+      point_of_sales {
         id
         label
       }
@@ -61,9 +61,9 @@ watch(
 <template>
   <template v-if="!pointOfSaleIsSelected">
     <div class="container home-container">
-      <p v-if="result && result.pointOfSales">
+      <p v-if="result && result.point_of_sales">
         <p>{{ result.pointOfSales }}</p>
-        <p v-for="pointOfSale of result.pointOfSales" :key="pointOfSale.id">{{ pointOfSale.label }}</p>
+        <p v-for="pointOfSale of result.point_of_sales" :key="pointOfSale.id">{{ pointOfSale.label }}</p>
       </p>
       <div class="w-40 ps-5 pt-5">
         <FormKit type="form" @submit="selectPointOfSale">

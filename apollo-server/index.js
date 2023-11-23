@@ -12,7 +12,8 @@ const server = new ApolloServer({
 });
 
 const loginCheck = async (req) => {
-  const token = req.headers['x-token'] || ""
+  // const token = req.headers['x-token'] || ""
+  const token = req.headers && req.headers['x-token'] ? req.headers['x-token'] : "";
   if (!token) return false;
   try {
     return verify(token, process.env.SECRET)

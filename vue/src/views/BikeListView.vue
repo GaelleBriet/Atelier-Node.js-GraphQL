@@ -49,27 +49,27 @@ const onFilter = () => {
   console.log("filter");
 };
 
-const { result } = useQuery(gql`
-  query getBikes {
-    bikes {
-      id
-      number
-      status
-      kind {
-        label
-      }
-      shop {
-        label
-      }
-    }
-  }
-`);
-watch(
-  () => result.value,
-  newValue => {
-    console.log(newValue);
-  }
-);
+// const { result } = useQuery(gql`
+//   query getBikes {
+//     bikes {
+//       id
+//       number
+//       status
+//       kind {
+//         label
+//       }
+//       shop {
+//         label
+//       }
+//     }
+//   }
+// `);
+// watch(
+//   () => result.value,
+//   newValue => {
+//     console.log(newValue);
+//   }
+// );
 </script>
 
 <template>
