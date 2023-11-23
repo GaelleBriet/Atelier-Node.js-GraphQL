@@ -3,6 +3,10 @@ import { useRouter } from "vue-router";
 import TitleComponent from "../components/TitleComponent.vue";
 import DataGridComponent from "../components/DataGridComponent.vue";
 import FilterComponent from "../components/FilterComponent.vue";
+import { watch } from "vue";
+
+import { useQuery } from "@vue/apollo-composable";
+import gql from "graphql-tag";
 
 const router = useRouter();
 const bikesData = [
@@ -44,6 +48,28 @@ const handleActionClick = rowIndex => {
 const onFilter = () => {
   console.log("filter");
 };
+
+const { result } = useQuery(gql`
+  query getBikes {
+    bikes {
+      id
+      number
+      status
+      kind {
+        label
+      }
+      shop {
+        label
+      }
+    }
+  }
+`);
+watch(
+  () => result.value,
+  newValue => {
+    console.log(newValue);
+  }
+);
 </script>
 
 <template>
