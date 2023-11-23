@@ -8,10 +8,17 @@ class CoreSQLDataSource {
     this.model = model;
   }
 
+  async create(data) {
+    try {
+      return await this.model.create(data);
+    } catch (error) {
+      INTERNAL_SERVER_ERROR(error);
+    }
+  }
+
   async loadByPk(id) {
     return await this.#loaders.getByPk.load(id);
   }
-
   async getByPk(id) {
     try {
       const instance = await this.model.findByPk(id);

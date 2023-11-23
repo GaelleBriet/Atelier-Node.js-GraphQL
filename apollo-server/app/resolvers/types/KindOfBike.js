@@ -5,6 +5,6 @@ module.exports = {
     // Here are some example of APIs that could be used as a RESTDataSource:
     // - https://apilayer.com/marketplace/exchangerates_data-api
     // - https://freecurrencyapi.com/
-    dollars: null
+    dollars: await DS.currency.getUSDPriceFromEUR(price)
   })
 };

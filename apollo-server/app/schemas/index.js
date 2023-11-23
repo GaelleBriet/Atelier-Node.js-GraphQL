@@ -9,6 +9,10 @@ const configuration = {
     queries: {
         repository: "./",
         files: ["Query"]
+    },
+    mutations: {
+        repository: "./",
+        files: ["Mutation"]
     }
 };
 
@@ -21,11 +25,13 @@ function read(type) {
 // Les schémas/types utilisés dans l'API GraphQL :
 const types = read("types");
 const queries = read("queries");
+const mutations = read("mutations");
 
 // Le schéma GraphQL est construit en combinant les fichiers lus précédemment.
 const typeDefs = `#graphql
     ${types}
     ${queries}
+    ${mutations}
 `;
 
 module.exports = typeDefs;

@@ -13,9 +13,31 @@ type Schedule {
 
 type Rent {
     id: Int
-    client: Client,
-    bike: Bike,
-    schedule: Schedule,
+    client: Client
+    bike: Bike
+    schedule: Schedule
     lessor: PointOfSale!
     recipient: PointOfSale
+}
+
+input ClientInput {
+    firstname: String!
+    lastname: String!
+}
+
+input ScheduleInput {
+    start: Date!
+    due: Date!
+}
+
+input CreateRentInput {
+    client: ClientInput!
+    bike_id: Int!
+    schedule: ScheduleInput!
+    lessor: Int!
+}
+
+input CompleteRentInput {
+    bike_number: String!
+    return_point_of_sale_id: Int!
 }

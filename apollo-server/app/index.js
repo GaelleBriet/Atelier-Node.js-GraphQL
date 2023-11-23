@@ -5,5 +5,5 @@ const ScalarDate = require("./resolvers/scalars/Date");
 
 module.exports = {
   typeDefs,
-  resolvers: { Date: ScalarDate, ...resolvers },
+  resolvers: {Date: ScalarDate, ...resolvers},
 };

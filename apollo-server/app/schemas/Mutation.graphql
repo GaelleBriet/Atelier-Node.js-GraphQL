@@ -1,0 +1,4 @@
+type Mutation {
+   createRent(data: CreateRentInput!): Rent!
+   completeRent(data: CompleteRentInput!): Rent!
+}
