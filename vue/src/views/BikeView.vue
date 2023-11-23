@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
 import TitleComponent from "../components/TitleComponent.vue";
 import DataGridComponent from "../components/DataGridComponent.vue";
 
-const router = useRouter();
 
 const actualBike = { id: 1, number: "A0001", status: "Disponible", lastPointOfSale: "Aix-en-Provence - Parc Jourdan" };
 
@@ -28,7 +26,7 @@ const bikeHistory = [
       <DataGridComponent
         :columns="['Départ de ', 'Date', 'Retour à', 'Date']"
         :data="bikeHistory"
-        :actionButton="false"
+        :action-button="false"
         @action-click="handleActionClick"
       />
     </div>

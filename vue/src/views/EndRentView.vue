@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
 import { ref } from "vue";
 import TitleComponent from "../components/TitleComponent.vue";
 import FormText from "../components/formkit/FormText.vue";
 import FormSelect from "../components/formkit/FormSelect.vue";
 
-const router = useRouter();
 
 const currentStep = ref(1);
 const submitButtonLabel = ref("Suivant");
@@ -22,7 +20,7 @@ const onSubmit = () => {
 <template>
   <div class="container ps-5 pt-3">
     <TitleComponent title="Récupérer une location" />
-    <FormKit type="form" @submit="onSubmit" :submit-label="submitButtonLabel">
+    <FormKit type="form" :submit-label="submitButtonLabel" @submit="onSubmit">
       <div class="col-6">
         <FormText :label="'Numéro du vélo'" :placeholder="'Vélo'" />
       </div>

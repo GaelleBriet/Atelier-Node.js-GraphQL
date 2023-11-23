@@ -1,20 +1,17 @@
 <script setup lang="ts">
-defineProps({
-  name: String,
-  id: String,
-  label: String,
-  help: String,
-  placeholder: String,
-  options: {
-    type: Array,
-    default: () => []
-  }
-});
+defineProps<{
+  name: string;
+  id: string;
+  label: string;
+  help: string;
+  placeholder: string;
+  options: Array<string>;
+}>();
 </script>
 
 <template>
   <div>
-    <FormKit type="select" :name="name" :id="id" :label="label" :options="options"> </FormKit>
+    <FormKit :id="id" type="select" :name="name" :label="label" :options="options"> </FormKit>
   </div>
 </template>
 

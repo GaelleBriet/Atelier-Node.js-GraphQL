@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
 import { ref } from "vue";
-import { onMounted, watch } from "vue";
+import { watch } from "vue";
 import { usePointOfSaleStore } from "../stores/pointOfSale";
 import FormSelect from "../components/formkit/FormSelect.vue";
 
-const router = useRouter();
 const pointOfSaleStore = usePointOfSaleStore();
 const pointOfSaleIsSelected = ref(pointOfSaleStore.pointOfSaleSelected);
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import FormSelect from "../components/formkit/FormSelect.vue";
 
-const props = defineProps<{
+defineProps<{
   buttonLabel: string;
   typeOptions: string[];
   statusOptions: string[];
@@ -18,7 +18,7 @@ const handlesubmit = () => {
 </script>
 <template>
   <div>
-    <FormKit type="form" @submit="handlesubmit" :submit-label="buttonLabel">
+    <FormKit type="form" :submit-label="buttonLabel" @submit="handlesubmit">
       <FormSelect :label="'Type'" :options="['Tous', ...typeOptions.map(option => option.label)]" />
       <FormSelect :label="'Statut'" :options="['Tous', ...statusOptions.map(option => option.label)]" />
       <FormSelect :label="'Point de vente'" :options="['Tous', ...pointOfSaleOptions.map(option => option.label)]" />

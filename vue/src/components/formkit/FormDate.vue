@@ -1,12 +1,9 @@
 <script setup lang="ts">
-defineProps({
-  label: String,
-  help: String,
-  value: {
-    type: String,
-    default: () => new Date().toISOString().slice(0, 10)
-  }
-});
+defineProps<{
+  label: string,
+  help: string,
+  value: string,
+}>();
 </script>
 <template>
   <div>

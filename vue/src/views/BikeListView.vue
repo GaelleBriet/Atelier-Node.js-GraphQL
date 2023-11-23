@@ -50,11 +50,11 @@ const onFilter = () => {
   <div class="container ps-5 pt-3">
     <TitleComponent :title="'Liste des vélos'" />
     <FilterComponent
-      :buttonLabel="'Filtrer'"
+      :button-label="'Filtrer'"
+      :type-options="filterTypeData"
+      :status-options="filterStatusData"
+      :point-of-sale-options="filterPointOfSale"
       @submit="onFilter"
-      :typeOptions="filterTypeData"
-      :statusOptions="filterStatusData"
-      :pointOfSaleOptions="filterPointOfSale"
     />
     <div>
       <DataGridComponent
