@@ -10,7 +10,7 @@ module.exports = {
       where: { number: number }
     });
   },
-  bikes: (_, { filter }, { DS }) => DS.bike.getAll({ where: filter }),
+  bikes: (_, { filter, offset =0, limit = 10 }, { DS }) => DS.bike.getAll({ where: filter, offset, limit }),
 
   point_of_sales: async (_, {filter}, {DS}) => {
     console.log(await DS.shop.getAll({where: filter}))

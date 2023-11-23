@@ -6,7 +6,7 @@ input Filter {
 
 type Query {
     bike(id: Int, number: String): Bike
-    bikes(filter: Filter): [Bike]
+    bikes(filter: Filter, offset: Int, limit: Int): [Bike]
 
     point_of_sales(filter: Filter): [PointOfSale]
     point_of_sale(id: Int, name: String): PointOfSale
