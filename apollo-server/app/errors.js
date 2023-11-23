@@ -21,4 +21,24 @@ module.exports = {
       }
     });
   },
+  UNKNOWN_BIKE: (message) => {
+    throw new GraphQLError(message ?? "Aucun vélo n'a été trouvé correspondant à ces identifiants.", {
+      extensions: {
+        code: "BAD_USER_INPUT",
+        http: {
+          status: 400
+        }
+      }
+    });
+  },
+  UNKNOWN_RENT: (message) => {
+    throw new GraphQLError(message ?? "Aucune location n'a été trouvée correspondant à ces identifiants.", {
+      extensions: {
+        code: "BAD_USER_INPUT",
+        http: {
+          status: 400
+        }
+      }
+    });
+  },
 };

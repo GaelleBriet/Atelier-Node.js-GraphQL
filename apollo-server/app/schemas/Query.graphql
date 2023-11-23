@@ -7,4 +7,13 @@ input Filter {
 type Query {
     bike(id: Int, number: String): Bike
     bikes(filter: Filter): [Bike]
+
+    point_of_sales(filter: Filter): [PointOfSale]
+    point_of_sale(id: Int, name: String): PointOfSale
+
+    kind_of_bikes(filter: Filter): [KindOfBike]
+    kind_of_bike(id: Int, name: String): KindOfBike
+
+    rents(filter: Filter): [Rent]
+    rent(id: Int): Rent
 }
