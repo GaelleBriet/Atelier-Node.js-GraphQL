@@ -8,7 +8,7 @@ export interface PointOfSaleState {
 export const usePointOfSaleStore = defineStore("pointOfSale", {
   state: (): PointOfSaleState => ({
     pointOfSaleSelected: false,
-    name: "Aix-en-Provence - Parc Jourdan"
+    name: ""
   }),
   getters: {
     getPointOfSaleSelected: (state: PointOfSaleState): boolean => {
@@ -21,6 +21,9 @@ export const usePointOfSaleStore = defineStore("pointOfSale", {
   actions: {
     setPointOfSaleSelected(this: PointOfSaleState): void {
       this.pointOfSaleSelected = true;
+    },
+    setName(this: PointOfSaleState, name: string): void {
+      this.name = name;
     }
   }
 });

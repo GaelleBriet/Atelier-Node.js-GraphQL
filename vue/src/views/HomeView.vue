@@ -3,52 +3,29 @@ import { ref } from "vue";
 import { watch } from "vue";
 import { usePointOfSaleStore } from "../stores/pointOfSale";
 import FormSelect from "../components/formkit/FormSelect.vue";
+import { apolloService } from "../services/apollo.service";
 
-import { useQuery } from "@vue/apollo-composable";
-import gql from "graphql-tag";
-
-// const { result } = useQuery(
-//   gql`
-//     query ExampleQuery($bikeId: Int!) {
-//       bike(id: $bikeId) {
-//         number
-//       }
-//     }
-//   `,
-//   {
-//     bikeId: 1
-//   }
-// );
-// watch(
-//   () => result.value,
-//   newValue => {
-//     console.log(newValue);
-//   }
-// );
-
-const { result } = useQuery(
-  gql`
-    query getPointOfSales {
-      point_of_sales {
-        id
-        label
-      }
-    }
-  `,
-);
-watch(
-  () => result.value,
-  newValue => {
-    console.log(newValue);
-  }
-);
+const pointOfSalesResponse = apolloService.getPointOfSales();
 
 const pointOfSaleStore = usePointOfSaleStore();
 const pointOfSaleIsSelected = ref(pointOfSaleStore.pointOfSaleSelected);
 
+const selected = ref("");
+const selectedPointOfSaleLabel = ref("");
+
 const selectPointOfSale = () => {
-  pointOfSaleStore.setPointOfSaleSelected();
+  pointOfSaleIsSelected.value = true;
+  const selectedPointOfSaleId = Number(selected.value) - 1;
+  selectedPointOfSaleLabel.value = pointOfSalesResponse.value.point_of_sales[selectedPointOfSaleId].label;
+  pointOfSaleStore.setName(selectedPointOfSaleLabel.value);
 };
+
+watch(
+  () => pointOfSalesResponse.value,
+  newValue => {
+    console.log(newValue);
+  }
+);
 
 watch(
   () => pointOfSaleStore.pointOfSaleSelected,
@@ -61,17 +38,17 @@ watch(
 <template>
   <template v-if="!pointOfSaleIsSelected">
     <div class="container home-container">
-      <p v-if="result && result.point_of_sales">
-        <p>{{ result.pointOfSales }}</p>
-        <p v-for="pointOfSale of result.point_of_sales" :key="pointOfSale.id">{{ pointOfSale.label }}</p>
-      </p>
-      <div class="w-40 ps-5 pt-5">
-        <FormKit type="form" @submit="selectPointOfSale">
-          <FormSelect
-            :label="'Veuillez sélectionner votre point de vente'"
-            :options="['Aix-en-Provence - Parc Jourdan', '2', '3']"
-          />
-        </FormKit>
+      <div v-if="pointOfSalesResponse && pointOfSalesResponse.point_of_sales">
+        <div class="w-40 ps-5 pt-5">
+          <FormKit type="form" @submit="selectPointOfSale()">
+            <FormSelect
+              v-model="selected"
+              :label="'Veuillez sélectionner votre point de vente'"
+              :options="pointOfSalesResponse.point_of_sales"
+              :placeholder="'Point de vente'"
+            />
+          </FormKit>
+        </div>
       </div>
     </div>
   </template>
@@ -81,7 +58,7 @@ watch(
       <div class="container py-5 px-5">
         <div>
           <p>Votre connexion actuelle est liée au point de vente suivant :</p>
-          <p class="text-color-pink fw-bold">Aix-en-Provence - Parc Jourdan</p>
+          <p class="text-color-pink fw-bold">{{ selectedPointOfSaleLabel }}</p>
           <button class="btn btn-secondary">Changer de point de vente</button>
         </div>
         <div class="btn-container">

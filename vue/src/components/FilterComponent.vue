@@ -6,6 +6,7 @@ defineProps<{
   typeOptions: object[];
   statusOptions: object[];
   pointOfSaleOptions: object[];
+  results: number;
 }>();
 
 const emit = defineEmits<{
@@ -23,7 +24,7 @@ const handlesubmit = () => {
       <FormSelect :label="'Statut'" :options="['Tous', ...statusOptions.map(option => option.label)]" />
       <FormSelect :label="'Point de vente'" :options="['Tous', ...pointOfSaleOptions.map(option => option.label)]" />
     </FormKit>
-    <div class="results">Nombre de résultats</div>
+    <div class="results">Nombre de résultats : {{ results }}</div>
   </div>
 </template>
 

@@ -1,18 +1,4 @@
 <script setup lang="ts">
-// defineProps({
-//   columns: {
-//     type: Array,
-//     default: () => []
-//   },
-//   data: {
-//     type: Array,
-//     default: () => []
-//   },
-//   actionButton: {
-//     type: Boolean,
-//     default: true
-//   }
-// });
 defineProps<{
   columns: Array<string>;
   data: Array<object>;

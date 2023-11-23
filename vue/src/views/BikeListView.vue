@@ -3,19 +3,25 @@ import { useRouter } from "vue-router";
 import TitleComponent from "../components/TitleComponent.vue";
 import DataGridComponent from "../components/DataGridComponent.vue";
 import FilterComponent from "../components/FilterComponent.vue";
-import { watch } from "vue";
-
-import { useQuery } from "@vue/apollo-composable";
-import gql from "graphql-tag";
+import { watch, onMounted, computed } from "vue";
+import { apolloService } from "../services/apollo.service";
 
 const router = useRouter();
-const bikesData = [
-  { id: 1, numéro: "A001", type: "type 1", prixEUR: 10, prixUSD: 12, statut: "Disponible", pointDeVente: "Aix" },
-  { id: 2, numéro: "A002", type: "type 2", prixEUR: 20, prixUSD: 24, statut: "Disponible", pointDeVente: "Aix" },
-  { id: 3, numéro: "A003", type: "type 3", prixEUR: 30, prixUSD: 36, statut: "Disponible", pointDeVente: "Aix" },
-  { id: 4, numéro: "A004", type: "type 4", prixEUR: 40, prixUSD: 48, statut: "Disponible", pointDeVente: "Aix" },
-  { id: 5, numéro: "A005", type: "type 5", prixEUR: 50, prixUSD: 60, statut: "Disponible", pointDeVente: "Aix" }
-];
+const bikeResponse = apolloService.getBikes();
+
+const formatedBikesData = computed(() => {
+  return (
+    bikeResponse.result.value?.bikes.map(bike => ({
+      Numéro: bike.number,
+      Type: bike.kind.label,
+      "Prix EUR": "",
+      "Prix USD": "",
+      Statut: bike.status,
+      "Point de vente": bike.shop.label
+    })) || []
+  );
+});
+
 
 const filterTypeData = [
   { id: 1, label: "Gazelle" },
@@ -49,27 +55,15 @@ const onFilter = () => {
   console.log("filter");
 };
 
-// const { result } = useQuery(gql`
-//   query getBikes {
-//     bikes {
-//       id
-//       number
-//       status
-//       kind {
-//         label
-//       }
-//       shop {
-//         label
-//       }
-//     }
-//   }
-// `);
-// watch(
-//   () => result.value,
-//   newValue => {
-//     console.log(newValue);
-//   }
-// );
+watch(
+  () => bikeResponse.result.value,
+  newValue => {
+    console.log(newValue);
+  }
+);
+onMounted(() => {
+  bikeResponse.loadMore();
+});
 </script>
 
 <template>
@@ -80,12 +74,17 @@ const onFilter = () => {
       :type-options="filterTypeData"
       :status-options="filterStatusData"
       :point-of-sale-options="filterPointOfSale"
+      :results="bikeResponse.result.value?.bikes.length || 0"
       @submit="onFilter"
     />
+    <div v-if="bikeResponse.result.value && bikeResponse.result.value.bikes">
+      <p v-for="bike of bikeResponse.result.value.bikes" :key="bike.id">
+      </p>
+    </div>
     <div>
       <DataGridComponent
         :columns="['Numéro', 'Type', 'Prix EUR', 'Prix USD', 'Statut', 'Point de vente', 'Actions']"
-        :data="bikesData.map(({ id, ...rest }) => rest)"
+        :data="formatedBikesData"
         :action-button="true"
         @action-click="handleActionClick"
       />
