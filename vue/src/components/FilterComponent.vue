@@ -3,9 +3,9 @@ import FormSelect from "../components/formkit/FormSelect.vue";
 
 defineProps<{
   buttonLabel: string;
-  typeOptions: string[];
-  statusOptions: string[];
-  pointOfSaleOptions: string[];
+  typeOptions: object[];
+  statusOptions: object[];
+  pointOfSaleOptions: object[];
 }>();
 
 const emit = defineEmits<{

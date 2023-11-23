@@ -60,6 +60,7 @@ const onFilter = () => {
       <DataGridComponent
         :columns="['Numéro', 'Type', 'Prix EUR', 'Prix USD', 'Statut', 'Point de vente', 'Actions']"
         :data="bikesData.map(({ id, ...rest }) => rest)"
+        :action-button="true"
         @action-click="handleActionClick"
       />
     </div>

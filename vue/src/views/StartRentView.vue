@@ -3,6 +3,10 @@ import TitleComponent from "../components/TitleComponent.vue";
 import FormText from "../components/formkit/FormText.vue";
 import FormSelect from "../components/formkit/FormSelect.vue";
 import FormDate from "../components/formkit/FormDate.vue";
+
+const onSubmit = () => {
+  // console.log("submit");
+};
 </script>
 
 <template>

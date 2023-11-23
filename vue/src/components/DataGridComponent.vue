@@ -1,25 +1,30 @@
 <script setup lang="ts">
-defineProps({
-  columns: {
-    type: Array,
-    default: () => []
-  },
-  data: {
-    type: Array,
-    default: () => []
-  },
-  actionButton: {
-    type: Boolean,
-    default: true
-  }
-});
+// defineProps({
+//   columns: {
+//     type: Array,
+//     default: () => []
+//   },
+//   data: {
+//     type: Array,
+//     default: () => []
+//   },
+//   actionButton: {
+//     type: Boolean,
+//     default: true
+//   }
+// });
+defineProps<{
+  columns: Array<string>;
+  data: Array<object>;
+  actionButton?: boolean;
+}>();
 
 const emit = defineEmits<{
   (e: "action-click", rowIndex: number): void;
 }>();
 
 const handleActionClick = rowIndex => {
-  // Vous pouvez ajouter la logique de gestion de l'action ici
+  // ajouter la logique de gestion de l'action ici
   console.log(`Action clicked for row ${rowIndex}`);
   emit("action-click", rowIndex);
 };

@@ -11,7 +11,7 @@ watch(
   () => pointOfSaleStore.name,
   newValue => {
     pointOfSaleName.value = newValue;
-    console.log(pointOfSaleName.value);
+    // console.log(pointOfSaleName.value);
   }
 );
 

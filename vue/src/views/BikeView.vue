@@ -2,7 +2,6 @@
 import TitleComponent from "../components/TitleComponent.vue";
 import DataGridComponent from "../components/DataGridComponent.vue";
 
-
 const actualBike = { id: 1, number: "A0001", status: "Disponible", lastPointOfSale: "Aix-en-Provence - Parc Jourdan" };
 
 const bikeHistory = [
@@ -12,6 +11,10 @@ const bikeHistory = [
   { departure: "Shangri-La", departureDate: "04/09/2021", arrival: "Camelot", arrivalDate: "04/09/2021" },
   { departure: "Valhalla", departureDate: "05/09/2021", arrival: "Elysium", arrivalDate: "05/09/2021" }
 ];
+
+const handleActionClick = () => {
+  console.log("action click");
+};
 </script>
 
 <template>
