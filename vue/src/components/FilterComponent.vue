@@ -3,9 +3,9 @@ import FormSelect from "../components/formkit/FormSelect.vue";
 
 defineProps<{
   buttonLabel: string;
-  typeOptions: object[];
-  statusOptions: object[];
-  pointOfSaleOptions: object[];
+  typeOptions: { id: number; label: string }[];
+  statusOptions: { id: number; label: string }[];
+  pointOfSaleOptions: { id: number; label: string }[];
   results: number;
 }>();
 
@@ -20,9 +20,9 @@ const handlesubmit = () => {
 <template>
   <div>
     <FormKit type="form" :submit-label="buttonLabel" @submit="handlesubmit">
-      <FormSelect :label="'Type'" :options="['Tous', ...typeOptions.map(option => option.label)]" />
-      <FormSelect :label="'Statut'" :options="['Tous', ...statusOptions.map(option => option.label)]" />
-      <FormSelect :label="'Point de vente'" :options="['Tous', ...pointOfSaleOptions.map(option => option.label)]" />
+      <FormSelect :label="'Type'" :options="typeOptions" />
+      <FormSelect :label="'Statut'" :options="statusOptions" />
+      <FormSelect :label="'Point de vente'" :options="pointOfSaleOptions" />
     </FormKit>
     <div class="results">Nombre de résultats : {{ results }}</div>
   </div>

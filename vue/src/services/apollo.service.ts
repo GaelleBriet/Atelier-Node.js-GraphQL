@@ -14,6 +14,26 @@ export const apolloService = {
     `);
     return result;
   },
+
+  getKindOfBikes: (): Ref<IKindOfBikeReponse | undefined> => {
+    const result = ref<IKindOfBikeReponse | undefined>();
+    const { onResult } = useQuery<IKindOfBikeReponse>(gql`
+      query getKindOfBikes {
+        kind_of_bikes {
+          id
+          label
+        }
+      }
+    `);
+
+    onResult(({ data }) => {
+      if (data) {
+        result.value = data;
+      }
+    });
+    return result;
+  },
+
   getBikes: () => {
     const { result, fetchMore } = useQuery<IBikesReponse>(
       gql`
@@ -23,6 +43,7 @@ export const apolloService = {
             number
             status
             kind {
+              id
               label
             }
             shop {

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, watch } from "vue";
+
 const props = defineProps<{
   id?: string;
   name?: string;
@@ -10,12 +12,22 @@ const props = defineProps<{
 
 const emit = defineEmits(["update:modelValue"]);
 
-const transformedOptions = props.options.reduce(
-  (acc, option) => {
-    acc[option.id] = option.label;
-    return acc;
+const transformedOptions = ref({} as Record<number, string>);
+
+watch(
+  () => props.options,
+  newOptions => {
+    if (newOptions) {
+      transformedOptions.value = newOptions.reduce(
+        (acc, option) => {
+          acc[option.id] = option.label;
+          return acc;
+        },
+        {} as Record<number, string>
+      );
+    }
   },
-  {} as Record<number, string>
+  { immediate: true }
 );
 
 const handleChange = (event: Event) => {

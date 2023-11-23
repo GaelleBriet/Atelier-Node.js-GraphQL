@@ -8,10 +8,13 @@ import { apolloService } from "../services/apollo.service";
 
 const router = useRouter();
 const bikeResponse = apolloService.getBikes();
+const typeResponse = apolloService.getKindOfBikes();
+const shopResponse = apolloService.getPointOfSales();
 
 const formatedBikesData = computed(() => {
   return (
     bikeResponse.result.value?.bikes.map(bike => ({
+      id: bike.id,
       Numéro: bike.number,
       Type: bike.kind.label,
       "Prix EUR": "",
@@ -22,12 +25,19 @@ const formatedBikesData = computed(() => {
   );
 });
 
+const typeOptions = computed(() => {
+  return typeResponse.value?.kind_of_bikes.map(kind => ({
+    id: kind.id,
+    label: kind.label
+  }));
+});
 
-const filterTypeData = [
-  { id: 1, label: "Gazelle" },
-  { id: 2, label: "Vélo avec remorque" },
-  { id: 3, label: "Électrique" }
-];
+const shopOptions = computed(() => {
+  return shopResponse.value?.point_of_sales.map(shop => ({
+    id: shop.id,
+    label: shop.label
+  }));
+});
 
 const filterStatusData = [
   { id: 1, label: "En location" },
@@ -35,20 +45,9 @@ const filterStatusData = [
   { id: 3, label: "En réparation" }
 ];
 
-const filterPointOfSale = [
-  { id: 1, label: "Aix-en-Provence - Parc Jourdan" },
-  { id: 2, label: "Marseille" },
-  { id: 3, label: "3" }
-];
-
-const handleActionClick = rowIndex => {
-  const selectedRow = bikesData[rowIndex];
-  if (selectedRow && selectedRow.id !== undefined) {
-    const bikeId = selectedRow.id;
-    router.push({ name: "bike", params: { id: bikeId } });
-  } else {
-    console.error("No bike selected");
-  }
+const handleActionClick = rowId => {
+  const bikeId = rowId + 1;
+  router.push(`/bike/${bikeId}`);
 };
 
 const onFilter = () => {
@@ -61,6 +60,14 @@ watch(
     console.log(newValue);
   }
 );
+
+watch(
+  () => typeResponse.value,
+  newValue => {
+    console.log(newValue);
+  }
+);
+
 onMounted(() => {
   bikeResponse.loadMore();
 });
@@ -71,23 +78,22 @@ onMounted(() => {
     <TitleComponent :title="'Liste des vélos'" />
     <FilterComponent
       :button-label="'Filtrer'"
-      :type-options="filterTypeData"
+      :type-options="typeOptions"
       :status-options="filterStatusData"
-      :point-of-sale-options="filterPointOfSale"
+      :point-of-sale-options="shopOptions"
       :results="bikeResponse.result.value?.bikes.length || 0"
       @submit="onFilter"
     />
     <div v-if="bikeResponse.result.value && bikeResponse.result.value.bikes">
-      <p v-for="bike of bikeResponse.result.value.bikes" :key="bike.id">
-      </p>
-    </div>
-    <div>
-      <DataGridComponent
-        :columns="['Numéro', 'Type', 'Prix EUR', 'Prix USD', 'Statut', 'Point de vente', 'Actions']"
-        :data="formatedBikesData"
-        :action-button="true"
-        @action-click="handleActionClick"
-      />
+      <p v-for="bike of bikeResponse.result.value.bikes" :key="bike.id"></p>
+      <div>
+        <DataGridComponent
+          :columns="['Numéro', 'Type', 'Prix EUR', 'Prix USD', 'Statut', 'Point de vente', 'Actions']"
+          :data="formatedBikesData"
+          :action-button="true"
+          @action-click="rowId => handleActionClick(rowId)"
+        />
+      </div>
     </div>
   </div>
 </template>

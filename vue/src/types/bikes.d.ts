@@ -1,19 +1,20 @@
-export {}
+export {};
 
 declare global {
   interface IBikes {
-    id: number,
-    number: string,
-    status: string,
+    id: number;
+    number: string;
+    status: string;
     kind: {
-      label: string,
+      id: number;
+      label: string;
       price: {
-        dollars: number,
-        euros: number
-      }
-    },
+        dollars: number;
+        euros: number;
+      };
+    };
     shop: {
-      label: string
-    }
+      label: string;
+    };
   }
 }
