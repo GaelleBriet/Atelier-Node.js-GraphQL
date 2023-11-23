@@ -4,18 +4,35 @@ import { watch } from "vue";
 import { usePointOfSaleStore } from "../stores/pointOfSale";
 import FormSelect from "../components/formkit/FormSelect.vue";
 
+import { useQuery } from "@vue/apollo-composable";
+import gql from "graphql-tag";
+
+const { result } = useQuery(
+  gql`
+    query ExampleQuery($bikeId: Int!) {
+      bike(id: $bikeId) {
+        number
+      }
+    }
+  `,
+  {
+    bikeId: 1
+  }
+);
+
+watch(
+  () => result.value,
+  newValue => {
+    console.log(newValue);
+  }
+);
+
 const pointOfSaleStore = usePointOfSaleStore();
 const pointOfSaleIsSelected = ref(pointOfSaleStore.pointOfSaleSelected);
 
 const selectPointOfSale = () => {
   pointOfSaleStore.setPointOfSaleSelected(true);
 };
-
-// onMounted(() => {
-//   if (!pointOfSaleIsSelected) {
-//     appStore.setPointOfSaleSelected(false);
-//   }
-// });
 
 watch(
   () => pointOfSaleStore.pointOfSaleSelected,
@@ -28,6 +45,9 @@ watch(
 <template>
   <template v-if="!pointOfSaleIsSelected">
     <div class="container home-container">
+      <p v-if="result && result.bike">
+        <p>{{ result.bike.number }}</p>
+      </p>
       <div class="w-40 ps-5 pt-5">
         <FormKit type="form" @submit="selectPointOfSale">
           <FormSelect
