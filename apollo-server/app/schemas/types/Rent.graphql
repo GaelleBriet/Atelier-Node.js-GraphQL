@@ -36,3 +36,8 @@ input CreateRentInput {
     schedule: ScheduleInput!
     lessor: Int!
 }
+
+input CompleteRentInput {
+    bike_number: String!
+    return_point_of_sale_id: Int!
+}
