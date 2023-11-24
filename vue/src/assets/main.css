@@ -1,35 +1,117 @@
-@import "./base.css";
+:root {
+  --background-body-color: rgb(255, 255, 255);
+  --background-body-color-2: rgb(247, 249, 250);
 
+  --navbar-background-light: rgb(223, 230, 237);
+  --navbar-background-dark: rgb(158, 173, 186);
+
+  --text-color-black: rgb(31, 39, 46);
+  --text-color-dark: rgb(41, 56, 69);
+  --text-color-light: rgb(223, 230, 237);
+  --text-color-pink: rgb(203, 100, 219);
+
+  --primary-color: rgb(44, 136, 217);
+  --secondary-color: rgb(101, 88, 245);
+  --success-color: rgb(26, 174, 159);
+  --warning-color: rgb(232, 131, 58);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
 #app {
-  max-width: 1280px;
+  height: calc(100vh - 190px);
   margin: 0 auto;
-  padding: 2rem;
-
   font-weight: normal;
+  background: var(--background-body-color);
+  color: var(--text-color);
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+/*---- NAVBAR ----*/
+.navbar {
+  background: var(--navbar-background-dark);
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.logo {
+  color: var(--text-color-dark);
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.nav-link {
+  color: var(--secondary-color);
 }
+
+/*---- PAGE ----*/
+.container {
+  background-color: var(--background-body-color-2);
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.container-title {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: var(--text-color-dark);
+  font-size: 2rem;
+}
+
+.text-color-pink {
+  color: var(--text-color-pink);
+}
+
+.container-title {
+  font-weight: bold;
+}
+
+/*---- BTN ----*/
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-color-light);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  color: var(--text-color-light);
+}
+
+.btn-warning {
+  background-color: var(--warning-color);
+  border-color: var(--warning-color);
+  color: var(--text-color-light);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+  color: var(--text-color-light);
+}
+
+/*---- GENERIC  ----*/
+.w-30 {
+  width: 30%;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+/*---- FORMKIT ----*/
+[data-type="submit"] .formkit-input {
+  background-color: var(--secondary-color);
+  width: 100%;
+}
+
+[data-family="button"] .formkit-wrapper {
+  padding-top: 3rem;
+}
+
+/* .formkit-wrapper .formkit-input {
+  width: 100%;
+} */
