@@ -17,7 +17,14 @@ const selectPointOfSale = () => {
   pointOfSaleIsSelected.value = true;
   const selectedPointOfSaleId = Number(selected.value) - 1;
   selectedPointOfSaleLabel.value = pointOfSalesResponse.value.point_of_sales[selectedPointOfSaleId].label;
-  pointOfSaleStore.setName(selectedPointOfSaleLabel.value);
+  pointOfSaleStore.setSelectedPointOfSale(selectedPointOfSaleLabel.value);
+};
+
+const resetSelection = () => {
+  pointOfSaleIsSelected.value = false;
+  selected.value = "";
+  selectedPointOfSaleLabel.value = "";
+  pointOfSaleStore.setSelectedPointOfSale("");
 };
 
 watch(
@@ -31,8 +38,10 @@ watch(
   () => pointOfSaleStore.pointOfSaleSelected,
   newValue => {
     pointOfSaleIsSelected.value = newValue;
+    console.log("pointOfSaleIsSelected in HomeView:", newValue);
   }
 );
+
 </script>
 
 <template>
@@ -59,7 +68,7 @@ watch(
         <div>
           <p>Votre connexion actuelle est liée au point de vente suivant :</p>
           <p class="text-color-pink fw-bold">{{ selectedPointOfSaleLabel }}</p>
-          <button class="btn btn-secondary">Changer de point de vente</button>
+          <button class="btn btn-secondary" @click="resetSelection">Changer de point de vente</button>
         </div>
         <div class="btn-container">
           <router-link to="/location-start" class="btn btn-success mb-3">Démarrer une location</router-link>

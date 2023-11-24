@@ -2,28 +2,25 @@ import { defineStore } from "pinia";
 
 export interface PointOfSaleState {
   pointOfSaleSelected: boolean;
-  name: string;
+  selectedPointOfSale: string;
 }
 
 export const usePointOfSaleStore = defineStore("pointOfSale", {
   state: (): PointOfSaleState => ({
     pointOfSaleSelected: false,
-    name: ""
+    selectedPointOfSale: ""
   }),
   getters: {
-    getPointOfSaleSelected: (state: PointOfSaleState): boolean => {
-      return state.pointOfSaleSelected;
-    },
-    getName: (state: PointOfSaleState): string => {
-      return state.name;
+    getSelectedPointOfSale: (state: PointOfSaleState): string => {
+      return state.selectedPointOfSale;
     }
   },
   actions: {
     setPointOfSaleSelected(this: PointOfSaleState): void {
       this.pointOfSaleSelected = true;
     },
-    setName(this: PointOfSaleState, name: string): void {
-      this.name = name;
+    setSelectedPointOfSale(this: PointOfSaleState, selectedPointOfSale: string): void {
+      this.selectedPointOfSale = selectedPointOfSale;
     }
   }
 });

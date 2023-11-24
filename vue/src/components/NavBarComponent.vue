@@ -3,22 +3,14 @@ import { ref, watch } from "vue";
 import { usePointOfSaleStore } from "../stores/pointOfSale";
 
 const pointOfSaleStore = usePointOfSaleStore();
+const selectedPointOfSale = ref(pointOfSaleStore.getSelectedPointOfSale);
 
-const pointOfSaleName = ref(pointOfSaleStore.name);
-const pointOfSaleSelected = ref(pointOfSaleStore.pointOfSaleSelected);
-
-watch(
-  () => pointOfSaleStore.name,
-  newValue => {
-    pointOfSaleName.value = newValue;
-    // console.log(pointOfSaleName.value);
-  }
-);
 
 watch(
-  () => pointOfSaleStore.pointOfSaleSelected,
+  () => pointOfSaleStore.selectedPointOfSale,
   newValue => {
-    pointOfSaleSelected.value = newValue;
+    selectedPointOfSale.value = newValue;
+    console.log("pointOfSaleSelected in NavBar:", newValue);
   }
 );
 </script>
@@ -39,8 +31,8 @@ watch(
 
       <div class="me-5">
         <p>Point de vente</p>
-        <template v-if="pointOfSaleSelected">
-          <span v-html="pointOfSaleName"></span>
+        <template v-if="selectedPointOfSale">
+          <span>{{ selectedPointOfSale }}</span>
         </template>
         <span v-else> Aucun point de vente sélectionné</span>
         <li class="nav-link">Changer</li>
