@@ -2,7 +2,7 @@ const {UNKNOWN_BIKE, UNKNOWN_RENT} = require("../../errors");
 
 module.exports = {
   async createRent(_, {data}, {DS}) {
-    const relatedBike = await DS.bike.loadByPk(data.bike_id);
+    const relatedBike = await DS.bike.getOne({ where: { number: data.bike_number } });
 
     if (!relatedBike) throw new UNKNOWN_BIKE('Bike not found');
 
@@ -12,6 +12,8 @@ module.exports = {
 
     const rentData = {
       ...data,
+      bike_id: relatedBike.id,
+      start_date: new Date(),
       rent_point_of_sale_id: data.lessor,
     }
     return await DS.rent.create(rentData);

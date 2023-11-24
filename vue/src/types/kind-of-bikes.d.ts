@@ -1,8 +1,12 @@
-export {}
+export {};
 
 declare global {
   interface IKindOfBike {
-    id: number,
-    label: string,
+    id: number;
+    label: string;
+    price: {
+      dollars: number;
+      euros: number;
+    };
   }
 }

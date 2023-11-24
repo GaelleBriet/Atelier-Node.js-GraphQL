@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import FormSelect from "../components/formkit/FormSelect.vue";
+import { ref } from "vue";
+
+const selectedType = ref(null);
+const selectedStatus = ref(null);
+const selectedPointOfSale = ref(null);
 
 defineProps<{
   buttonLabel: string;
@@ -10,19 +15,23 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: "submit"): void;
+  (e: "submit", value: { type: string | null; status: string | null; pointOfSale: string | null }): void;
 }>();
 
 const handlesubmit = () => {
-  emit("submit");
+  emit("submit", {
+    type: selectedType.value,
+    status: selectedStatus.value,
+    pointOfSale: selectedPointOfSale.value
+  });
 };
 </script>
 <template>
   <div>
     <FormKit type="form" :submit-label="buttonLabel" @submit="handlesubmit">
-      <FormSelect :label="'Type'" :options="typeOptions" />
-      <FormSelect :label="'Statut'" :options="statusOptions" />
-      <FormSelect :label="'Point de vente'" :options="pointOfSaleOptions" />
+      <FormSelect v-model="selectedType" :label="'Type'" :options="typeOptions" />
+      <FormSelect v-model="selectedStatus" :label="'Statut'" :options="statusOptions" />
+      <FormSelect v-model="selectedPointOfSale" :label="'Point de vente'" :options="pointOfSaleOptions" />
     </FormKit>
     <div class="results">Nombre de résultats : {{ results }}</div>
   </div>

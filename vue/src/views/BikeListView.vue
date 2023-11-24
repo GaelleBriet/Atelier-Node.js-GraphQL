@@ -3,7 +3,7 @@ import { useRouter } from "vue-router";
 import TitleComponent from "../components/TitleComponent.vue";
 import DataGridComponent from "../components/DataGridComponent.vue";
 import FilterComponent from "../components/FilterComponent.vue";
-import { watch, onMounted, computed } from "vue";
+import { watch, onMounted, computed, ref } from "vue";
 import { apolloService } from "../services/apollo.service";
 
 const router = useRouter();
@@ -17,13 +17,14 @@ const formatedBikesData = computed(() => {
       id: bike.id,
       Numéro: bike.number,
       Type: bike.kind.label,
-      "Prix EUR": "",
-      "Prix USD": "",
+      "Prix EUR": bike.kind.price.euros,
+      "Prix USD": bike.kind.price.dollars,
       Statut: bike.status,
       "Point de vente": bike.shop.label
     })) || []
   );
 });
+
 
 const typeOptions = computed(() => {
   return typeResponse.value?.kind_of_bikes.map(kind => ({
@@ -50,8 +51,8 @@ const handleActionClick = rowId => {
   router.push(`/bike/${bikeId}`);
 };
 
-const onFilter = () => {
-  console.log("filter");
+const onFilter = ({ type, status, pointOfSale }) => {
+  console.log("filter", type, status, pointOfSale);
 };
 
 watch(

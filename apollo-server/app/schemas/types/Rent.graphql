@@ -26,13 +26,12 @@ input ClientInput {
 }
 
 input ScheduleInput {
-    start: Date!
     due: Date!
 }
 
 input CreateRentInput {
     client: ClientInput!
-    bike_id: Int!
+    bike_number: String!
     schedule: ScheduleInput!
     lessor: Int!
 }

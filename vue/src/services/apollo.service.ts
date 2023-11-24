@@ -22,6 +22,10 @@ export const apolloService = {
         kind_of_bikes {
           id
           label
+          price {
+            dollars
+            euros
+          }
         }
       }
     `);
@@ -45,6 +49,10 @@ export const apolloService = {
             kind {
               id
               label
+              price {
+                dollars
+                euros
+              }
             }
             shop {
               label
