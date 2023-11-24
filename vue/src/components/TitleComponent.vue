@@ -8,4 +8,3 @@ defineProps<{
     {{ title }}
   </div>
 </template>
-

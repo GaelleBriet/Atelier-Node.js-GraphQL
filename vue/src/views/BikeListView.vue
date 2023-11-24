@@ -3,7 +3,7 @@ import { useRouter } from "vue-router";
 import TitleComponent from "../components/TitleComponent.vue";
 import DataGridComponent from "../components/DataGridComponent.vue";
 import FilterComponent from "../components/FilterComponent.vue";
-import { watch, onMounted, computed, ref } from "vue";
+import { watch, onMounted, computed } from "vue";
 import { apolloService } from "../services/apollo.service";
 
 const router = useRouter();
@@ -24,7 +24,6 @@ const formatedBikesData = computed(() => {
     })) || []
   );
 });
-
 
 const typeOptions = computed(() => {
   return typeResponse.value?.kind_of_bikes.map(kind => ({

@@ -60,32 +60,6 @@ const { mutate: createRent } = useMutation(gql`
   }
 `);
 
-// const onSubmit = () => {
-//   // console.log("submit");
-//   console.log(lastname.value, firstname.value, bike.value, shop.value, date.value);
-//   const { mutate: startRent } = useMutation(gql`
-//     mutation startRent($lastname: String!, $firstname: String!, $bike: String!, $shop: String!, $date: String!) {
-//       startRent(lastname: $lastname, firstname: $firstname, bike: $bike, shop: $shop, date: $date) {
-//         lastname
-//         firstname
-//         bike
-//         shop
-//         date
-//       }
-//     }
-//   `);
-//   startRent({
-//     variables: {
-//       bike: bike.value,
-//       client: {
-//         firstname: firstname.value,
-//         lastname: lastname.value
-//       },
-//       lessor: shop.value,
-//       schedule: date.value
-//     }
-//   });
-// };
 watch(
   () => pointOfSalesResponse.value,
   newValue => {

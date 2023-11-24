@@ -4,7 +4,6 @@ import TitleComponent from "../components/TitleComponent.vue";
 import FormText from "../components/formkit/FormText.vue";
 import FormSelect from "../components/formkit/FormSelect.vue";
 
-
 const currentStep = ref(1);
 const submitButtonLabel = ref("Suivant");
 

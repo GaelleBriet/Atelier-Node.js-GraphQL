@@ -41,7 +41,6 @@ watch(
     console.log("pointOfSaleIsSelected in HomeView:", newValue);
   }
 );
-
 </script>
 
 <template>

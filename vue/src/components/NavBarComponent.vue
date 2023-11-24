@@ -5,7 +5,6 @@ import { usePointOfSaleStore } from "../stores/pointOfSale";
 const pointOfSaleStore = usePointOfSaleStore();
 const selectedPointOfSale = ref(pointOfSaleStore.getSelectedPointOfSale);
 
-
 watch(
   () => pointOfSaleStore.selectedPointOfSale,
   newValue => {
